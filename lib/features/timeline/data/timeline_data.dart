@@ -1,6 +1,26 @@
 import 'timeline_entry.dart';
 
-const timelineEntries = <TimelineEntry>[
+const bool kStressTest = bool.fromEnvironment('STRESS');
+
+final List<TimelineEntry> timelineEntries =
+kStressTest ? _stressEntries() : _realEntries;
+
+List<TimelineEntry> _stressEntries() {
+  const eras = ['Prequel Era', 'Original Trilogy', 'Sequel Era'];
+  return List.generate(
+    500,
+        (i) => TimelineEntry(
+      id: 'stress-$i',
+      title: i % 50 == 0 ? 'Judul panjang ' * 14 : 'Peristiwa uji ke-$i',
+      era: eras[i * 3 ~/ 500], // berurutan agar header era tidak berulang
+      year: i - 250,
+      mediaType: MediaType.values[i % MediaType.values.length],
+      summary: 'Ringkasan panjang untuk menguji overflow. ' * 20,
+    ),
+  );
+}
+
+const _realEntries = <TimelineEntry>[
   // ── Prequel Era ──
   TimelineEntry(
     id: 'naboo-blockade',

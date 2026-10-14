@@ -4,9 +4,13 @@ class EmptyResultsView extends StatelessWidget {
   const EmptyResultsView({
     super.key,
     this.message = 'Coba kata kunci atau era yang lain.',
+    this.actionLabel,
+    this.onAction,
   });
 
   final String message;
+  final String? actionLabel;
+  final VoidCallback? onAction;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +35,13 @@ class EmptyResultsView extends StatelessWidget {
               style: theme.textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
+            if (actionLabel != null && onAction != null) ...[
+              const SizedBox(height: 24),
+              FilledButton.tonal(
+                onPressed: onAction,
+                child: Text(actionLabel!),
+              ),
+            ],
           ],
         ),
       ),

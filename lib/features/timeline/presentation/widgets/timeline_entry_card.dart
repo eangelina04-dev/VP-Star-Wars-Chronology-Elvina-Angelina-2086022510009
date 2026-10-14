@@ -9,10 +9,12 @@ class TimelineEntryCard extends StatelessWidget {
     required this.isFavorite,
     required this.onTap,
     required this.onFavoriteToggled,
+    this.isSelected = false,
   });
 
   final TimelineEntry entry;
   final bool isFavorite;
+  final bool isSelected;
   final VoidCallback onTap;
   final ValueChanged<String> onFavoriteToggled;
 
@@ -24,6 +26,12 @@ class TimelineEntryCard extends StatelessWidget {
 
     return Card(
       clipBehavior: Clip.antiAlias,
+      shape: isSelected
+          ? RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+        side: BorderSide(color: colors.primary),
+      )
+          : null,
       child: InkWell(
         onTap: onTap,
         child: Padding(
@@ -37,6 +45,8 @@ class TimelineEntryCard extends StatelessWidget {
                   children: [
                     Text(
                       '${entry.yearLabel} · ${entry.mediaType.label}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: textTheme.labelMedium?.copyWith(
                         color: colors.onSurfaceVariant,
                       ),
