@@ -8,6 +8,7 @@ import 'widgets/detail_placeholder.dart';
 import 'widgets/empty_results_view.dart';
 import 'widgets/era_filter_chips.dart';
 import 'widgets/era_header.dart';
+import 'widgets/timeline_app_bar.dart';
 import 'widgets/timeline_detail_body.dart';
 import 'widgets/timeline_entry_card.dart';
 import 'widgets/timeline_search_field.dart';
@@ -21,8 +22,10 @@ class TimelineScreen extends StatefulWidget {
 
 class _TimelineScreenState extends State<TimelineScreen> {
   static const double _wideBreakpoint = 720;
-  static final List<String> _eras =
-  timelineEntries.map((e) => e.era).toSet().toList();
+  static final List<String> _eras = timelineEntries
+      .map((e) => e.era)
+      .toSet()
+      .toList();
 
   final _searchController = TextEditingController();
   bool _isLoading = true;
@@ -76,10 +79,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
     );
     final rows = groupByEra(entries);
     final compact = MediaQuery.sizeOf(context).height < 500;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-    final logoAsset = isDark
-        ? 'assets/images/star_wars_logo_dark.png'
-        : 'assets/images/star_wars_logo_light.png';
 
     TimelineEntry? selected;
     for (final e in entries) {
@@ -88,34 +87,11 @@ class _TimelineScreenState extends State<TimelineScreen> {
     selected ??= entries.isEmpty ? null : entries.first;
 
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: compact ? 56 : 96,
-        title: compact
-            ? const Text('Star Wars Timeline')
-            : Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Image.asset(
-              logoAsset,
-              height: 60,
-              semanticLabel: 'Logo Star Wars',
-              errorBuilder: (context, error, stack) =>
-              const SizedBox.shrink(),
-            ),
-            const SizedBox(height: 4),
-            const Text('Star Wars Timeline'),
-          ],
-        ),
-        actions: [
-          IconButton(
-            tooltip: _showFavoritesOnly ? 'Tampilkan semua' : 'Hanya favorit',
-            isSelected: _showFavoritesOnly,
-            icon: const Icon(Icons.star_border),
-            selectedIcon: const Icon(Icons.star),
-            onPressed: () =>
-                setState(() => _showFavoritesOnly = !_showFavoritesOnly),
-          ),
-        ],
+      appBar: TimelineAppBar(
+        compact: compact,
+        showFavoritesOnly: _showFavoritesOnly,
+        onToggleFavorites: () =>
+            setState(() => _showFavoritesOnly = !_showFavoritesOnly),
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -132,9 +108,9 @@ class _TimelineScreenState extends State<TimelineScreen> {
                 child: selected == null
                     ? const DetailPlaceholder()
                     : TimelineDetailBody(
-                  key: ValueKey(selected.id), // reset posisi scroll
-                  entry: selected,
-                ),
+                        key: ValueKey(selected.id), // reset posisi scroll
+                        entry: selected,
+                      ),
               ),
             ],
           );
@@ -144,11 +120,11 @@ class _TimelineScreenState extends State<TimelineScreen> {
   }
 
   Widget _buildList(
-      List<TimelineEntry> entries,
-      List<Object> rows,
-      String? selectedId,
-      bool isWide,
-      ) {
+    List<TimelineEntry> entries,
+    List<Object> rows,
+    String? selectedId,
+    bool isWide,
+  ) {
     return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
