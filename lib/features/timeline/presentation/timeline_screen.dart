@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/timeline_data.dart';
 import '../data/timeline_entry.dart';
 import 'timeline_detail_screen.dart';
+import 'widgets/detail_placeholder.dart';
 import 'widgets/empty_results_view.dart';
 import 'widgets/era_filter_chips.dart';
 import 'widgets/era_header.dart';
@@ -26,7 +27,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
   bool _isLoading = true;
   String _query = '';
   String? _selectedEra;
-  String? _selectedId; // entri yang tampil di panel kanan (layar lebar)
+  String? _selectedId;
   bool _showFavoritesOnly = false;
   final Set<String> _favoriteIds = {};
 
@@ -55,7 +56,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
   }
 
   void _resetFilters() {
-    _searchController.clear(); // clear() tidak memicu onChanged
+    _searchController.clear();
     setState(() {
       _query = '';
       _selectedEra = null;
@@ -148,7 +149,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
               const VerticalDivider(width: 1),
               Expanded(
                 child: selected == null
-                    ? const _DetailPlaceholder()
+                    ? const DetailPlaceholder()
                     : TimelineDetailBody(
                   key: ValueKey(selected.id), // reset posisi scroll
                   entry: selected,
@@ -238,26 +239,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
             ),
           ),
       ],
-    );
-  }
-}
-
-class _DetailPlaceholder extends StatelessWidget {
-  const _DetailPlaceholder();
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.history_edu, size: 48, color: theme.colorScheme.outline),
-          const SizedBox(height: 16),
-          Text('Pilih peristiwa untuk melihat detail',
-              style: theme.textTheme.bodyMedium),
-        ],
-      ),
     );
   }
 }
