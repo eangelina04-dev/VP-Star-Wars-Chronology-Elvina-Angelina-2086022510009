@@ -12,7 +12,11 @@ class TimelineDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(entry.era, maxLines: 1, overflow: TextOverflow.ellipsis),
+        title: Text(
+          entry.era.label,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
       body: TimelineDetailBody(entry: entry),
     );

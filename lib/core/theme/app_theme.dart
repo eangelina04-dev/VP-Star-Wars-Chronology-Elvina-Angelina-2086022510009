@@ -50,25 +50,25 @@ class AppTheme {
 
   static ThemeData get dark {
     final scheme =
-    ColorScheme.fromSeed(
-      seedColor: starYellow,
-      brightness: Brightness.dark,
-    ).copyWith(
-      primary: starYellow,
-      onPrimary: black,
-      secondary: white,
-      onSecondary: black,
-      secondaryContainer: barGray,
-      onSecondaryContainer: white,
-      tertiary: starYellow,
-      onTertiary: black,
-      surface: black,
-      onSurface: white,
-      onSurfaceVariant: const Color(0xFFB3B3B3),
-      surfaceContainerLow: const Color(0xFF121212),
-      surfaceContainerHigh: const Color(0xFF1E1E1E),
-      outlineVariant: const Color(0xFF333333),
-    );
+        ColorScheme.fromSeed(
+          seedColor: starYellow,
+          brightness: Brightness.dark,
+        ).copyWith(
+          primary: starYellow,
+          onPrimary: black,
+          secondary: white,
+          onSecondary: black,
+          secondaryContainer: barGray,
+          onSecondaryContainer: white,
+          tertiary: starYellow,
+          onTertiary: black,
+          surface: black,
+          onSurface: white,
+          onSurfaceVariant: const Color(0xFFB3B3B3),
+          surfaceContainerLow: const Color(0xFF121212),
+          surfaceContainerHigh: const Color(0xFF1E1E1E),
+          outlineVariant: const Color(0xFF333333),
+        );
 
     return ThemeData(
       useMaterial3: true,
@@ -86,25 +86,25 @@ class AppTheme {
 
   static ThemeData get light {
     final scheme =
-    ColorScheme.fromSeed(
-      seedColor: starYellow,
-      brightness: Brightness.light,
-    ).copyWith(
-      primary: darkGold,
-      onPrimary: white,
-      secondary: black,
-      onSecondary: white,
-      secondaryContainer: const Color(0xFFE0E0E0),
-      onSecondaryContainer: black,
-      tertiary: darkGold,
-      onTertiary: white,
-      surface: white,
-      onSurface: black,
-      onSurfaceVariant: barGray,
-      surfaceContainerLow: const Color(0xFFF5F5F5),
-      surfaceContainerHigh: const Color(0xFFE8E8E8),
-      outlineVariant: const Color(0xFFCCCCCC),
-    );
+        ColorScheme.fromSeed(
+          seedColor: starYellow,
+          brightness: Brightness.light,
+        ).copyWith(
+          primary: darkGold,
+          onPrimary: white,
+          secondary: black,
+          onSecondary: white,
+          secondaryContainer: const Color(0xFFE0E0E0),
+          onSecondaryContainer: black,
+          tertiary: darkGold,
+          onTertiary: white,
+          surface: white,
+          onSurface: black,
+          onSurfaceVariant: barGray,
+          surfaceContainerLow: const Color(0xFFF5F5F5),
+          surfaceContainerHigh: const Color(0xFFE8E8E8),
+          outlineVariant: const Color(0xFFCCCCCC),
+        );
 
     return ThemeData(
       useMaterial3: true,

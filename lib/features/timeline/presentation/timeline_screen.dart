@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/timeline_data.dart';
+import '../domain/era.dart';
 import '../domain/timeline_entry.dart';
 import '../domain/timeline_filter.dart';
 import 'widgets/timeline_list.dart';
@@ -18,15 +19,11 @@ class TimelineScreen extends StatefulWidget {
 
 class _TimelineScreenState extends State<TimelineScreen> {
   static const double _wideBreakpoint = 720;
-  static final List<String> _eras = timelineEntries
-      .map((e) => e.era)
-      .toSet()
-      .toList();
 
   final _searchController = TextEditingController();
   bool _isLoading = true;
   String _query = '';
-  String? _selectedEra;
+  Era? _selectedEra;
   String? _selectedId;
   bool _showFavoritesOnly = false;
   final Set<String> _favoriteIds = {};
@@ -107,7 +104,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
             selectedId: selected?.id,
             showSelection: isWide,
             isLoading: _isLoading,
-            eras: _eras,
+            eras: Era.values,
             selectedEra: _selectedEra,
             searchController: _searchController,
             favoriteIds: _favoriteIds,

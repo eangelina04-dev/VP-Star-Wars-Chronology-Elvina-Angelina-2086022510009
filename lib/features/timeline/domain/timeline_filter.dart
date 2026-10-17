@@ -1,16 +1,18 @@
+import 'era.dart';
 import 'timeline_entry.dart';
 
 List<TimelineEntry> filterEntries(
-    List<TimelineEntry> entries, {
-      required String query,
-      required String? era,
-      required bool favoritesOnly,
-      required Set<String> favoriteIds,
-    }) {
+  List<TimelineEntry> entries, {
+  required String query,
+  required Era? era,
+  required bool favoritesOnly,
+  required Set<String> favoriteIds,
+}) {
   final q = query.trim().toLowerCase();
   return entries.where((e) {
     final matchesEra = era == null || e.era == era;
-    final matchesQuery = q.isEmpty ||
+    final matchesQuery =
+        q.isEmpty ||
         e.title.toLowerCase().contains(q) ||
         e.summary.toLowerCase().contains(q);
     final matchesFavorite = !favoritesOnly || favoriteIds.contains(e.id);
@@ -20,7 +22,7 @@ List<TimelineEntry> filterEntries(
 
 List<Object> groupByEra(List<TimelineEntry> entries) {
   final rows = <Object>[];
-  String? lastEra;
+  Era? lastEra;
   for (final entry in entries) {
     if (entry.era != lastEra) {
       rows.add(entry.era);

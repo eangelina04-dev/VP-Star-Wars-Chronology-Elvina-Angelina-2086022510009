@@ -1,3 +1,5 @@
+import 'era.dart';
+
 enum MediaType { film, series, game, book }
 
 extension MediaTypeLabel on MediaType {
@@ -21,8 +23,8 @@ class TimelineEntry {
 
   final String id;
   final String title;
-  final String era;
-  final int year; // negatif = BBY, positif = ABY
+  final Era era;
+  final int year;
   final MediaType mediaType;
   final String summary;
 

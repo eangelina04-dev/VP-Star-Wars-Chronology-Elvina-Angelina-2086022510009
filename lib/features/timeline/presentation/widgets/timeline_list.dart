@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../domain/era.dart';
 import '../../domain/timeline_entry.dart';
 import 'empty_results_view.dart';
 import 'era_filter_chips.dart';
@@ -30,13 +31,13 @@ class TimelineList extends StatelessWidget {
   final String? selectedId;
   final bool showSelection;
   final bool isLoading;
-  final List<String> eras;
-  final String? selectedEra;
+  final List<Era> eras;
+  final Era? selectedEra;
   final TextEditingController searchController;
   final Set<String> favoriteIds;
   final bool showFavoritesOnly;
   final ValueChanged<String> onQueryChanged;
-  final ValueChanged<String?> onEraSelected;
+  final ValueChanged<Era?> onEraSelected;
   final VoidCallback onReset;
   final ValueChanged<TimelineEntry> onEntryTap;
   final ValueChanged<String> onFavoriteToggled;
@@ -85,7 +86,7 @@ class TimelineList extends StatelessWidget {
               itemBuilder: (context, index) {
                 final row = rows[index];
                 if (row is! TimelineEntry) {
-                  return EraHeader(era: row as String);
+                  return EraHeader(era: row as Era);
                 }
                 return Padding(
                   padding: const EdgeInsets.symmetric(

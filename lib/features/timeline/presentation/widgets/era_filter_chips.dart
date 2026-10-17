@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../domain/era.dart';
+
 class EraFilterChips extends StatelessWidget {
   const EraFilterChips({
     super.key,
@@ -8,9 +10,9 @@ class EraFilterChips extends StatelessWidget {
     required this.onSelected,
   });
 
-  final List<String> eras;
-  final String? selectedEra; // null = semua era
-  final ValueChanged<String?> onSelected;
+  final List<Era> eras;
+  final Era? selectedEra;
+  final ValueChanged<Era?> onSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class EraFilterChips extends StatelessWidget {
           for (final era in eras) ...[
             const SizedBox(width: 8),
             ChoiceChip(
-              label: Text(era),
+              label: Text(era.label),
               selected: selectedEra == era,
               onSelected: (_) => onSelected(era),
             ),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../domain/era.dart';
+
 class EraHeader extends StatelessWidget {
   const EraHeader({super.key, required this.era});
 
-  final String era;
+  final Era era;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class EraHeader extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
       child: Text(
-        era,
+        era.label,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
         style: theme.textTheme.titleSmall?.copyWith(
