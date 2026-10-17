@@ -108,7 +108,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: compact ? 56 : 88,
+        toolbarHeight: compact ? 56 : 96,
         title: compact
             ? const Text('Star Wars Timeline')
             : Column(

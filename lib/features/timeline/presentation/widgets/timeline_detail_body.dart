@@ -14,7 +14,7 @@ class TimelineDetailBody extends StatelessWidget {
     final colors = theme.colorScheme;
 
     return Align(
-      alignment: Alignment.topCenter,
+      alignment: Alignment.topLeft,
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 640), // batas baca di layar lebar
         child: SingleChildScrollView(

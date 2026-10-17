@@ -14,6 +14,7 @@ class StarWarsApp extends StatelessWidget {
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.system,
       home: const TimelineScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
