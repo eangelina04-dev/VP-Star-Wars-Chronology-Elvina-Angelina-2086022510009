@@ -28,9 +28,9 @@ class TimelineEntryCard extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       shape: isSelected
           ? RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-        side: BorderSide(color: colors.primary),
-      )
+              borderRadius: BorderRadius.circular(12),
+              side: BorderSide(color: colors.primary),
+            )
           : null,
       child: InkWell(
         onTap: onTap,

@@ -27,19 +27,19 @@ class TimelineAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: compact
           ? const Text('Star Wars Timeline')
           : Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            logoAsset,
-            height: 60,
-            semanticLabel: 'Logo Star Wars',
-            errorBuilder: (context, error, stack) =>
-            const SizedBox.shrink(),
-          ),
-          const SizedBox(height: 4),
-          const Text('Star Wars Timeline'),
-        ],
-      ),
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Image.asset(
+                  logoAsset,
+                  height: 60,
+                  semanticLabel: 'Logo Star Wars',
+                  errorBuilder: (context, error, stack) =>
+                      const SizedBox.shrink(),
+                ),
+                const SizedBox(height: 4),
+                const Text('Star Wars Timeline'),
+              ],
+            ),
       actions: [
         IconButton(
           tooltip: showFavoritesOnly ? 'Tampilkan semua' : 'Hanya favorit',

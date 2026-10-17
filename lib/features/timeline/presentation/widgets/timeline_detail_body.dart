@@ -16,7 +16,9 @@ class TimelineDetailBody extends StatelessWidget {
     return Align(
       alignment: Alignment.topLeft,
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 640), // batas baca di layar lebar
+        constraints: const BoxConstraints(
+          maxWidth: 640,
+        ), // batas baca di layar lebar
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
           child: Column(
@@ -24,8 +26,9 @@ class TimelineDetailBody extends StatelessWidget {
             children: [
               Text(
                 '${entry.yearLabel} · ${entry.mediaType.label}',
-                style: textTheme.labelMedium
-                    ?.copyWith(color: colors.onSurfaceVariant),
+                style: textTheme.labelMedium?.copyWith(
+                  color: colors.onSurfaceVariant,
+                ),
               ),
               const SizedBox(height: 8),
               Text(entry.title, style: textTheme.headlineMedium),

@@ -3,15 +3,11 @@ import 'package:flutter/material.dart';
 import '../data/timeline_data.dart';
 import '../data/timeline_entry.dart';
 import '../domain/timeline_filter.dart';
+import 'widgets/timeline_list.dart';
 import 'timeline_detail_screen.dart';
 import 'widgets/detail_placeholder.dart';
-import 'widgets/empty_results_view.dart';
-import 'widgets/era_filter_chips.dart';
-import 'widgets/era_header.dart';
 import 'widgets/timeline_app_bar.dart';
 import 'widgets/timeline_detail_body.dart';
-import 'widgets/timeline_entry_card.dart';
-import 'widgets/timeline_search_field.dart';
 
 class TimelineScreen extends StatefulWidget {
   const TimelineScreen({super.key});
@@ -68,6 +64,16 @@ class _TimelineScreenState extends State<TimelineScreen> {
     });
   }
 
+  void _openEntry(TimelineEntry entry, bool isWide) {
+    if (isWide) {
+      setState(() => _selectedId = entry.id);
+    } else {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => TimelineDetailScreen(entry: entry)),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final entries = filterEntries(
@@ -96,7 +102,22 @@ class _TimelineScreenState extends State<TimelineScreen> {
       body: LayoutBuilder(
         builder: (context, constraints) {
           final isWide = constraints.maxWidth >= _wideBreakpoint;
-          final list = _buildList(entries, rows, selected?.id, isWide);
+          final list = TimelineList(
+            rows: rows,
+            selectedId: selected?.id,
+            showSelection: isWide,
+            isLoading: _isLoading,
+            eras: _eras,
+            selectedEra: _selectedEra,
+            searchController: _searchController,
+            favoriteIds: _favoriteIds,
+            showFavoritesOnly: _showFavoritesOnly,
+            onQueryChanged: (value) => setState(() => _query = value),
+            onEraSelected: (era) => setState(() => _selectedEra = era),
+            onReset: _resetFilters,
+            onEntryTap: (entry) => _openEntry(entry, isWide),
+            onFavoriteToggled: _toggleFavorite,
+          );
 
           if (!isWide) return list;
 
@@ -116,86 +137,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
           );
         },
       ),
-    );
-  }
-
-  Widget _buildList(
-    List<TimelineEntry> entries,
-    List<Object> rows,
-    String? selectedId,
-    bool isWide,
-  ) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-            child: TimelineSearchField(
-              controller: _searchController,
-              onChanged: (value) => setState(() => _query = value),
-            ),
-          ),
-        ),
-        SliverToBoxAdapter(
-          child: EraFilterChips(
-            eras: _eras,
-            selectedEra: _selectedEra,
-            onSelected: (era) => setState(() => _selectedEra = era),
-          ),
-        ),
-        if (_isLoading)
-          const SliverFillRemaining(
-            hasScrollBody: false,
-            child: Center(child: CircularProgressIndicator()),
-          )
-        else if (entries.isEmpty)
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: EmptyResultsView(
-              message: _showFavoritesOnly
-                  ? 'Ketuk bintang pada sebuah peristiwa untuk menambahkannya.'
-                  : 'Coba kata kunci atau era yang lain.',
-              actionLabel: 'Reset pencarian & filter',
-              onAction: _resetFilters,
-            ),
-          )
-        else
-          SliverPadding(
-            padding: const EdgeInsets.only(bottom: 16),
-            sliver: SliverList.builder(
-              itemCount: rows.length,
-              itemBuilder: (context, index) {
-                final row = rows[index];
-                if (row is! TimelineEntry) {
-                  return EraHeader(era: row as String);
-                }
-                return Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 4,
-                  ),
-                  child: TimelineEntryCard(
-                    entry: row,
-                    isFavorite: _favoriteIds.contains(row.id),
-                    isSelected: isWide && row.id == selectedId,
-                    onTap: () {
-                      if (isWide) {
-                        setState(() => _selectedId = row.id);
-                      } else {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => TimelineDetailScreen(entry: row),
-                          ),
-                        );
-                      }
-                    },
-                    onFavoriteToggled: _toggleFavorite,
-                  ),
-                );
-              },
-            ),
-          ),
-      ],
     );
   }
 }
