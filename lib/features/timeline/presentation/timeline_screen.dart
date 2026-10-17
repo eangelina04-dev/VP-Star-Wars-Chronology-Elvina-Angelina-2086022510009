@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data/timeline_data.dart';
 import '../data/timeline_entry.dart';
+import '../domain/timeline_filter.dart';
 import 'timeline_detail_screen.dart';
 import 'widgets/detail_placeholder.dart';
 import 'widgets/empty_results_view.dart';
@@ -64,36 +65,16 @@ class _TimelineScreenState extends State<TimelineScreen> {
     });
   }
 
-  List<TimelineEntry> get _filteredEntries {
-    final q = _query.trim().toLowerCase();
-    return timelineEntries.where((e) {
-      final matchesEra = _selectedEra == null || e.era == _selectedEra;
-      final matchesQuery = q.isEmpty ||
-          e.title.toLowerCase().contains(q) ||
-          e.summary.toLowerCase().contains(q);
-      final matchesFavorite =
-          !_showFavoritesOnly || _favoriteIds.contains(e.id);
-      return matchesEra && matchesQuery && matchesFavorite;
-    }).toList();
-  }
-
-  List<Object> _groupByEra(List<TimelineEntry> entries) {
-    final rows = <Object>[];
-    String? lastEra;
-    for (final entry in entries) {
-      if (entry.era != lastEra) {
-        rows.add(entry.era);
-        lastEra = entry.era;
-      }
-      rows.add(entry);
-    }
-    return rows;
-  }
-
   @override
   Widget build(BuildContext context) {
-    final entries = _filteredEntries;
-    final rows = _groupByEra(entries);
+    final entries = filterEntries(
+      timelineEntries,
+      query: _query,
+      era: _selectedEra,
+      favoritesOnly: _showFavoritesOnly,
+      favoriteIds: _favoriteIds,
+    );
+    final rows = groupByEra(entries);
     final compact = MediaQuery.sizeOf(context).height < 500;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final logoAsset = isDark
