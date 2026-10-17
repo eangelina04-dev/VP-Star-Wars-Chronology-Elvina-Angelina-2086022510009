@@ -1,4 +1,4 @@
-import 'timeline_entry.dart';
+import '../domain/timeline_entry.dart';
 
 const bool kStressTest = bool.fromEnvironment('STRESS');
 

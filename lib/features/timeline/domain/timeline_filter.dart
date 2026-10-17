@@ -1,4 +1,4 @@
-import '../data/timeline_entry.dart';
+import 'timeline_entry.dart';
 
 List<TimelineEntry> filterEntries(
     List<TimelineEntry> entries, {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../data/timeline_entry.dart';
+import '../../domain/timeline_entry.dart';
 
 class TimelineDetailBody extends StatelessWidget {
   const TimelineDetailBody({super.key, required this.entry});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../data/timeline_data.dart';
-import '../data/timeline_entry.dart';
+import '../domain/timeline_entry.dart';
 import '../domain/timeline_filter.dart';
 import 'widgets/timeline_list.dart';
 import 'timeline_detail_screen.dart';

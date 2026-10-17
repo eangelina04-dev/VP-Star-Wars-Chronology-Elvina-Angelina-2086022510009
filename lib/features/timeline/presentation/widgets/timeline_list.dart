@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../data/timeline_entry.dart';
+import '../../domain/timeline_entry.dart';
 import 'empty_results_view.dart';
 import 'era_filter_chips.dart';
 import 'era_header.dart';

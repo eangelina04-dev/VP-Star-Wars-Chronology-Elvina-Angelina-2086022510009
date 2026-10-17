@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../data/timeline_entry.dart';
+import '../domain/timeline_entry.dart';
 import 'widgets/timeline_detail_body.dart';
 
 class TimelineDetailScreen extends StatelessWidget {

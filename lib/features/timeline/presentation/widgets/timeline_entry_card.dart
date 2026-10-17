@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../data/timeline_entry.dart';
+import '../../domain/timeline_entry.dart';
 
 class TimelineEntryCard extends StatelessWidget {
   const TimelineEntryCard({
