@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../data/timeline_data.dart';
 import '../domain/era.dart';
 import '../domain/era_summary.dart';
-import 'saved_screen.dart';
 import 'timeline_screen.dart';
 import 'widgets/empty_results_view.dart';
 import 'widgets/era_grid.dart';

@@ -108,6 +108,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
           if (!isWide) return list;
 
           return Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               SizedBox(width: 380, child: list),
               const VerticalDivider(width: 1),
@@ -115,9 +116,9 @@ class _TimelineScreenState extends State<TimelineScreen> {
                 child: selected == null
                     ? const DetailPlaceholder()
                     : TimelineDetailBody(
-                        key: ValueKey(selected.id), // reset posisi scroll
-                        entry: selected,
-                      ),
+                  key: ValueKey(selected.id),
+                  entry: selected,
+                ),
               ),
             ],
           );
