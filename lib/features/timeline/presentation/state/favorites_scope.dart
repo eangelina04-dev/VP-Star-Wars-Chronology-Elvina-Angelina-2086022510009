@@ -6,8 +6,8 @@ class FavoritesScope extends InheritedNotifier<FavoritesController> {
   const FavoritesScope({
     super.key,
     required FavoritesController controller,
-    required Widget child,
-  }) : super(notifier: controller, child: child);
+    required super.child,
+  }) : super(notifier: controller);
 
   static FavoritesController of(BuildContext context) {
     final scope = context.dependOnInheritedWidgetOfExactType<FavoritesScope>();

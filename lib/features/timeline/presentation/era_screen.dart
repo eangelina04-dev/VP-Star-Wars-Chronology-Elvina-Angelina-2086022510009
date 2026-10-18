@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../data/timeline_data.dart';
 import '../domain/era.dart';
 import '../domain/era_summary.dart';
+import 'saved_screen.dart';
 import 'timeline_screen.dart';
 import 'widgets/empty_results_view.dart';
 import 'widgets/era_grid.dart';
@@ -37,13 +38,31 @@ class _EraScreenState extends State<EraScreen> {
     ).push(MaterialPageRoute(builder: (_) => TimelineScreen(initialEra: era)));
   }
 
+  void _openSaved() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (routeContext) =>
+            SavedScreen(onExplore: () => Navigator.of(routeContext).pop()),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final hasEvents = _summaries.any((s) => s.eventCount > 0);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Star Wars Chronology')),
+      appBar: AppBar(
+        title: const Text('Star Wars Chronology'),
+        actions: [
+          IconButton(
+            tooltip: 'Tersimpan',
+            icon: const Icon(Icons.bookmarks_outlined),
+            onPressed: _openSaved,
+          ),
+        ],
+      ),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(

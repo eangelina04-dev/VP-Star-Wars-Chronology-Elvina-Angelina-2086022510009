@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 class EmptyResultsView extends StatelessWidget {
   const EmptyResultsView({
     super.key,
+    this.icon = Icons.search_off,
+    this.title = 'Tidak ada peristiwa ditemukan',
     this.message = 'Coba kata kunci atau era yang lain.',
     this.actionLabel,
     this.onAction,
   });
 
+  final IconData icon;
+  final String title;
   final String message;
   final String? actionLabel;
   final VoidCallback? onAction;
@@ -22,10 +26,10 @@ class EmptyResultsView extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.search_off, size: 48, color: theme.colorScheme.outline),
+            Icon(icon, size: 48, color: theme.colorScheme.outline),
             const SizedBox(height: 16),
             Text(
-              'Tidak ada peristiwa ditemukan',
+              title,
               style: theme.textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
