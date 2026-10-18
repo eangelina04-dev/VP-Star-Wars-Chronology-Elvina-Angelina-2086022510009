@@ -11,7 +11,9 @@ import 'widgets/timeline_app_bar.dart';
 import 'widgets/timeline_detail_body.dart';
 
 class TimelineScreen extends StatefulWidget {
-  const TimelineScreen({super.key});
+  const TimelineScreen({super.key, this.initialEra});
+
+  final Era? initialEra;
 
   @override
   State<TimelineScreen> createState() => _TimelineScreenState();
@@ -31,6 +33,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
   @override
   void initState() {
     super.initState();
+    _selectedEra = widget.initialEra;
     _loadData();
   }
 

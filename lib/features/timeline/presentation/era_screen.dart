@@ -33,7 +33,7 @@ class _EraScreenState extends State<EraScreen> {
 
   void _openEra(Era era) {
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => const TimelineScreen()),
+      MaterialPageRoute(builder: (_) => TimelineScreen(initialEra: era)),
     );
   }
 
