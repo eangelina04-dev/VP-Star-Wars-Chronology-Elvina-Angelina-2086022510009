@@ -11,6 +11,8 @@ extension MediaTypeLabel on MediaType {
   };
 }
 
+String formatYear(int year) => year < 0 ? '${-year} BBY' : '$year ABY';
+
 class TimelineEntry {
   const TimelineEntry({
     required this.id,
@@ -28,5 +30,5 @@ class TimelineEntry {
   final MediaType mediaType;
   final String summary;
 
-  String get yearLabel => year < 0 ? '${-year} BBY' : '$year ABY';
+  String get yearLabel => formatYear(year);
 }
