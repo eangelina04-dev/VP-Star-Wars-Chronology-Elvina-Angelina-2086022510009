@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'core/theme/app_theme.dart';
-import 'features/timeline/presentation/timeline_screen.dart';
+import 'features/timeline/presentation/era_screen.dart';
 
 class StarWarsApp extends StatelessWidget {
   const StarWarsApp({super.key});
@@ -13,7 +13,7 @@ class StarWarsApp extends StatelessWidget {
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.system,
-      home: const TimelineScreen(),
+      home: const EraScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
