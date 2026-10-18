@@ -32,9 +32,9 @@ class _EraScreenState extends State<EraScreen> {
   }
 
   void _openEra(Era era) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => TimelineScreen(initialEra: era)),
-    );
+    Navigator.of(
+      context,
+    ).push(MaterialPageRoute(builder: (_) => TimelineScreen(initialEra: era)));
   }
 
   @override
@@ -56,11 +56,14 @@ class _EraScreenState extends State<EraScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Jelajahi Era', style: theme.textTheme.headlineMedium),
+                      Text(
+                        'Jelajahi Era',
+                        style: theme.textTheme.headlineMedium,
+                      ),
                       const SizedBox(height: 8),
                       Text(
                         'Saga Star Wars Episode I sampai IX terbagi ke dalam tiga era. '
-                            'Pilih satu era untuk menelusuri peristiwanya secara berurutan.',
+                        'Pilih satu era untuk menelusuri peristiwanya secara berurutan.',
                         style: theme.textTheme.bodyLarge?.copyWith(
                           color: theme.colorScheme.onSurfaceVariant,
                         ),
@@ -79,7 +82,9 @@ class _EraScreenState extends State<EraScreen> {
           else if (!hasEvents)
             const SliverFillRemaining(
               hasScrollBody: false,
-              child: EmptyResultsView(message: 'Data peristiwa belum tersedia.'),
+              child: EmptyResultsView(
+                message: 'Data peristiwa belum tersedia.',
+              ),
             )
           else
             SliverPadding(

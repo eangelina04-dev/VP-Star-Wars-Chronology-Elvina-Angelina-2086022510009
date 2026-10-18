@@ -5,6 +5,7 @@ import '../domain/era.dart';
 import '../domain/timeline_entry.dart';
 import '../domain/timeline_filter.dart';
 import 'widgets/timeline_list.dart';
+import 'state/favorites_scope.dart';
 import 'timeline_detail_screen.dart';
 import 'widgets/detail_placeholder.dart';
 import 'widgets/timeline_app_bar.dart';
@@ -28,7 +29,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
   Era? _selectedEra;
   String? _selectedId;
   bool _showFavoritesOnly = false;
-  final Set<String> _favoriteIds = {};
 
   @override
   void initState() {
@@ -47,12 +47,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
     await Future.delayed(const Duration(milliseconds: 800));
     if (!mounted) return;
     setState(() => _isLoading = false);
-  }
-
-  void _toggleFavorite(String id) {
-    setState(() {
-      if (!_favoriteIds.remove(id)) _favoriteIds.add(id);
-    });
   }
 
   void _resetFilters() {
@@ -76,12 +70,13 @@ class _TimelineScreenState extends State<TimelineScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final favorites = FavoritesScope.of(context);
     final entries = filterEntries(
       timelineEntries,
       query: _query,
       era: _selectedEra,
       favoritesOnly: _showFavoritesOnly,
-      favoriteIds: _favoriteIds,
+      favoriteIds: favorites.ids,
     );
     final rows = groupByEra(entries);
     final compact = MediaQuery.sizeOf(context).height < 500;
@@ -110,13 +105,13 @@ class _TimelineScreenState extends State<TimelineScreen> {
             eras: Era.values,
             selectedEra: _selectedEra,
             searchController: _searchController,
-            favoriteIds: _favoriteIds,
+            favoriteIds: favorites.ids,
             showFavoritesOnly: _showFavoritesOnly,
             onQueryChanged: (value) => setState(() => _query = value),
             onEraSelected: (era) => setState(() => _selectedEra = era),
             onReset: _resetFilters,
             onEntryTap: (entry) => _openEntry(entry, isWide),
-            onFavoriteToggled: _toggleFavorite,
+            onFavoriteToggled: favorites.toggle,
           );
 
           if (!isWide) return list;
