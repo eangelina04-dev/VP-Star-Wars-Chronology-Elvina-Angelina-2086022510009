@@ -38,31 +38,13 @@ class _EraScreenState extends State<EraScreen> {
     ).push(MaterialPageRoute(builder: (_) => TimelineScreen(initialEra: era)));
   }
 
-  void _openSaved() {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (routeContext) =>
-            SavedScreen(onExplore: () => Navigator.of(routeContext).pop()),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final hasEvents = _summaries.any((s) => s.eventCount > 0);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Star Wars Chronology'),
-        actions: [
-          IconButton(
-            tooltip: 'Tersimpan',
-            icon: const Icon(Icons.bookmarks_outlined),
-            onPressed: _openSaved,
-          ),
-        ],
-      ),
+      appBar: AppBar(title: const Text('Star Wars Chronology')),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(

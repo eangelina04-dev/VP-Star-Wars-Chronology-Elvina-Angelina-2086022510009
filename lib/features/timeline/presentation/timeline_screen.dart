@@ -21,14 +21,13 @@ class TimelineScreen extends StatefulWidget {
 }
 
 class _TimelineScreenState extends State<TimelineScreen> {
-  static const double _wideBreakpoint = 720;
+  static const double _wideBreakpoint = 700;
 
   final _searchController = TextEditingController();
   bool _isLoading = true;
   String _query = '';
   Era? _selectedEra;
   String? _selectedId;
-  bool _showFavoritesOnly = false;
 
   @override
   void initState() {
@@ -54,7 +53,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
     setState(() {
       _query = '';
       _selectedEra = null;
-      _showFavoritesOnly = false;
     });
   }
 
@@ -75,8 +73,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
       timelineEntries,
       query: _query,
       era: _selectedEra,
-      favoritesOnly: _showFavoritesOnly,
-      favoriteIds: favorites.ids,
     );
     final rows = groupByEra(entries);
     final compact = MediaQuery.sizeOf(context).height < 500;
@@ -89,11 +85,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
 
     return Scaffold(
       appBar: TimelineAppBar(
-        compact: compact,
-        showFavoritesOnly: _showFavoritesOnly,
-        onToggleFavorites: () =>
-            setState(() => _showFavoritesOnly = !_showFavoritesOnly),
-      ),
+        compact: compact),
       body: LayoutBuilder(
         builder: (context, constraints) {
           final isWide = constraints.maxWidth >= _wideBreakpoint;
@@ -106,7 +98,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
             selectedEra: _selectedEra,
             searchController: _searchController,
             favoriteIds: favorites.ids,
-            showFavoritesOnly: _showFavoritesOnly,
             onQueryChanged: (value) => setState(() => _query = value),
             onEraSelected: (era) => setState(() => _selectedEra = era),
             onReset: _resetFilters,

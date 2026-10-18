@@ -19,7 +19,6 @@ class TimelineList extends StatelessWidget {
     required this.selectedEra,
     required this.searchController,
     required this.favoriteIds,
-    required this.showFavoritesOnly,
     required this.onQueryChanged,
     required this.onEraSelected,
     required this.onReset,
@@ -35,7 +34,6 @@ class TimelineList extends StatelessWidget {
   final Era? selectedEra;
   final TextEditingController searchController;
   final Set<String> favoriteIds;
-  final bool showFavoritesOnly;
   final ValueChanged<String> onQueryChanged;
   final ValueChanged<Era?> onEraSelected;
   final VoidCallback onReset;
@@ -71,9 +69,6 @@ class TimelineList extends StatelessWidget {
           SliverFillRemaining(
             hasScrollBody: false,
             child: EmptyResultsView(
-              message: showFavoritesOnly
-                  ? 'Ketuk bintang pada sebuah peristiwa untuk menambahkannya.'
-                  : 'Coba kata kunci atau era yang lain.',
               actionLabel: 'Reset pencarian & filter',
               onAction: onReset,
             ),

@@ -1,16 +1,9 @@
 import 'package:flutter/material.dart';
 
 class TimelineAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const TimelineAppBar({
-    super.key,
-    required this.compact,
-    required this.showFavoritesOnly,
-    required this.onToggleFavorites,
-  });
+  const TimelineAppBar({super.key, required this.compact});
 
   final bool compact;
-  final bool showFavoritesOnly;
-  final VoidCallback onToggleFavorites;
 
   @override
   Size get preferredSize => Size.fromHeight(compact ? 56 : 96);
@@ -40,15 +33,6 @@ class TimelineAppBar extends StatelessWidget implements PreferredSizeWidget {
                 const Text('Star Wars Timeline'),
               ],
             ),
-      actions: [
-        IconButton(
-          tooltip: showFavoritesOnly ? 'Tampilkan semua' : 'Hanya favorit',
-          isSelected: showFavoritesOnly,
-          icon: const Icon(Icons.star_border),
-          selectedIcon: const Icon(Icons.star),
-          onPressed: onToggleFavorites,
-        ),
-      ],
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'core/theme/app_theme.dart';
-import 'features/timeline/presentation/era_screen.dart';
+import 'features/timeline/presentation/home_shell.dart';
 import 'features/timeline/presentation/state/favorites_controller.dart';
 import 'features/timeline/presentation/state/favorites_scope.dart';
 
@@ -30,7 +30,7 @@ class _StarWarsAppState extends State<StarWarsApp> {
         theme: AppTheme.light,
         darkTheme: AppTheme.dark,
         themeMode: ThemeMode.system,
-        home: const EraScreen(),
+        home: const HomeShell(),
       ),
     );
   }
