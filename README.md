@@ -156,3 +156,9 @@ Penjelasan lengkap ada di [docs/structure.md](docs/week05/structure.md).
 
 - [Struktur proyek](docs/week05/structure.md)
 - [Refleksi Week 05](docs/week05/reflection.md)
+
+## Rencana Pengembangan (Versi 2)
+
+- Gambar untuk setiap event di layar Detail (field `imageAsset` opsional pada `TimelineEntry`).
+- Menyimpan favorites secara persisten (local storage).
+- Memindahkan state ke solusi state management standar (Module 2).
