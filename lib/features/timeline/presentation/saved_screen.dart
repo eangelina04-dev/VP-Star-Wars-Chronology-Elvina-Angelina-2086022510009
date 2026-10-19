@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/app_name.dart';
 import '../data/timeline_data.dart';
 import '../domain/era.dart';
 import '../domain/timeline_entry.dart';
@@ -28,7 +29,7 @@ class SavedScreen extends StatelessWidget {
     final rows = groupByEra(entries);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Tersimpan')),
+      appBar: AppBar(title: const Text(appName)),
       body: Align(
         alignment: Alignment.topCenter,
         child: ConstrainedBox(

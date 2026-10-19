@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/constants/app_name.dart';
 import '../data/timeline_data.dart';
 import '../domain/era.dart';
 import '../domain/era_summary.dart';
@@ -43,7 +44,7 @@ class _EraScreenState extends State<EraScreen> {
     final hasEvents = _summaries.any((s) => s.eventCount > 0);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Star Wars Chronology')),
+      appBar: AppBar(title: const Text(appName)),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
