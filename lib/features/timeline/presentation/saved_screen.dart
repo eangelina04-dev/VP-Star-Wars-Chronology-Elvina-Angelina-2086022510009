@@ -43,10 +43,10 @@ class SavedScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Tersimpan', style: theme.textTheme.headlineMedium),
+                      Text('Saved', style: theme.textTheme.headlineMedium),
                       const SizedBox(height: 8),
                       Text(
-                        'Peristiwa yang kamu bintangi dikelompokkan berdasarkan era.',
+                        'Events you have starred are grouped by era.',
                         style: theme.textTheme.bodyLarge?.copyWith(
                           color: theme.colorScheme.onSurfaceVariant,
                         ),
@@ -62,10 +62,9 @@ class SavedScreen extends StatelessWidget {
               hasScrollBody: false,
               child: EmptyResultsView(
                 icon: Icons.star_border,
-                title: 'Belum ada peristiwa tersimpan',
-                message:
-                    'Ketuk bintang pada sebuah peristiwa untuk menyimpannya.',
-                actionLabel: 'Jelajahi peristiwa',
+                title: 'No saved events yet',
+                message: 'Tap the star on an event to save it.',
+                actionLabel: 'Explore events',
                 onAction: onExplore,
               ),
             )

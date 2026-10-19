@@ -13,7 +13,7 @@ class DetailPlaceholder extends StatelessWidget {
           Icon(Icons.history_edu, size: 48, color: theme.colorScheme.outline),
           const SizedBox(height: 16),
           Text(
-            'Pilih peristiwa untuk melihat detail',
+            'Select an event to view details',
             style: theme.textTheme.bodyMedium,
           ),
         ],

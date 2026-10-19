@@ -22,7 +22,7 @@ class EraFilterChips extends StatelessWidget {
       child: Row(
         children: [
           ChoiceChip(
-            label: const Text('Semua'),
+            label: const Text('All'),
             selected: selectedEra == null,
             onSelected: (_) => onSelected(null),
           ),

@@ -4,8 +4,8 @@ class EmptyResultsView extends StatelessWidget {
   const EmptyResultsView({
     super.key,
     this.icon = Icons.search_off,
-    this.title = 'Tidak ada peristiwa ditemukan',
-    this.message = 'Coba kata kunci atau era yang lain.',
+    this.title = 'No events found',
+    this.message = 'Try a different keyword or era.',
     this.actionLabel,
     this.onAction,
   });

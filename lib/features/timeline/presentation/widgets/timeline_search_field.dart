@@ -14,7 +14,7 @@ class TimelineSearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SearchBar(
       controller: controller,
-      hintText: 'Cari peristiwa...',
+      hintText: 'Search events..',
       leading: const Icon(Icons.search),
       onChanged: onChanged,
     );

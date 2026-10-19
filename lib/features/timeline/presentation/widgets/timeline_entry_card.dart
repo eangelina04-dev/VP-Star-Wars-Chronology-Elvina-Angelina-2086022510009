@@ -72,8 +72,8 @@ class TimelineEntryCard extends StatelessWidget {
               ),
               IconButton(
                 tooltip: isFavorite
-                    ? 'Hapus dari favorit'
-                    : 'Tambah ke favorit',
+                    ? 'Deleted from Saved'
+                    : 'Add to Saved',
                 isSelected: isFavorite,
                 icon: const Icon(Icons.star_border),
                 selectedIcon: const Icon(Icons.star),

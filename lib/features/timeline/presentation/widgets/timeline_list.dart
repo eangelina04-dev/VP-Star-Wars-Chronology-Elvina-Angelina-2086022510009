@@ -69,7 +69,7 @@ class TimelineList extends StatelessWidget {
           SliverFillRemaining(
             hasScrollBody: false,
             child: EmptyResultsView(
-              actionLabel: 'Reset pencarian & filter',
+              actionLabel: 'Reset search & filters',
               onAction: onReset,
             ),
           )

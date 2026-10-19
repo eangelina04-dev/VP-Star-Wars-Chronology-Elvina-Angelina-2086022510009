@@ -58,13 +58,13 @@ class _EraScreenState extends State<EraScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Jelajahi Era',
+                        'Explore Eras',
                         style: theme.textTheme.headlineMedium,
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Saga Star Wars Episode I sampai IX terbagi ke dalam tiga era. '
-                        'Pilih satu era untuk menelusuri peristiwanya secara berurutan.',
+                        'The Star Wars saga, Episodes I through IX, is divided into three eras. '
+                            'Pick an era to browse its events in chronological order.',
                         style: theme.textTheme.bodyLarge?.copyWith(
                           color: theme.colorScheme.onSurfaceVariant,
                         ),
@@ -84,7 +84,7 @@ class _EraScreenState extends State<EraScreen> {
             const SliverFillRemaining(
               hasScrollBody: false,
               child: EmptyResultsView(
-                message: 'Data peristiwa belum tersedia.',
+                message: 'Event data is not available yet.',
               ),
             )
           else

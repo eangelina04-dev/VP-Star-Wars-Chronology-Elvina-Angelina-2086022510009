@@ -14,7 +14,7 @@ class EraCard extends StatelessWidget {
     final textTheme = theme.textTheme;
     final colors = theme.colorScheme;
     final rangeLabel = summary.yearRangeLabel;
-    final meta = ['${summary.eventCount} peristiwa', ?rangeLabel].join(' · ');
+    final meta = ['${summary.eventCount} event', ?rangeLabel].join(' · ');
 
     return Card(
       clipBehavior: Clip.antiAlias,
@@ -29,7 +29,7 @@ class EraCard extends StatelessWidget {
                 summary.era.imageAsset,
                 width: double.infinity,
                 fit: BoxFit.cover,
-                semanticLabel: 'Gambar ${summary.era.label}',
+                semanticLabel: 'Picture ${summary.era.label}',
                 errorBuilder: (context, error, stack) => ColoredBox(
                   color: colors.surfaceContainerHigh,
                   child: Center(

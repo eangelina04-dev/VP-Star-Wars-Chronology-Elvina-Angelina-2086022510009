@@ -5,9 +5,9 @@ enum MediaType { film, series, game, book }
 extension MediaTypeLabel on MediaType {
   String get label => switch (this) {
     MediaType.film => 'Film',
-    MediaType.series => 'Serial',
+    MediaType.series => 'Series',
     MediaType.game => 'Game',
-    MediaType.book => 'Buku',
+    MediaType.book => 'Book',
   };
 }
 

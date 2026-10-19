@@ -1,17 +1,17 @@
 enum Era {
   prequel(
     'Prequel Era',
-    'Republik yang rapuh, pecahnya Clone Wars, dan jatuhnya Anakin Skywalker menjadi Darth Vader.',
+    'A fragile Republic, the outbreak of the Clone Wars, and the fall of Anakin Skywalker into Darth Vader.',
     'assets/images/eras/prequel.jpg',
   ),
   original(
     'Original Trilogy',
-    'Pemberontakan melawan Kekaisaran, dari Death Star pertama hingga penebusan Darth Vader.',
+    'The Rebellion against the Empire, from the first Death Star to the redemption of Darth Vader.',
     'assets/images/eras/original.jpg',
   ),
   sequel(
     'Sequel Era',
-    'Bangkitnya First Order dan akhir dari perjalanan keluarga Skywalker.',
+    'The rise of the First Order and the end of the Skywalker family\'s journey.',
     'assets/images/eras/sequel.jpg',
   );
 
