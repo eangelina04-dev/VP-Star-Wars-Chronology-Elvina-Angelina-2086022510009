@@ -62,5 +62,13 @@ void main() {
 
       expect(original.yearRangeLabel, '3 BBY – 5 ABY');
     });
+
+    test('daftar kosong menghasilkan semua era bernilai nol', () {
+      final summaries = summarizeEras([]);
+
+      expect(summaries.length, Era.values.length);
+      expect(summaries.every((s) => s.eventCount == 0), isTrue);
+      expect(summaries.every((s) => s.yearRangeLabel == null), isTrue);
+    });
   });
 }
