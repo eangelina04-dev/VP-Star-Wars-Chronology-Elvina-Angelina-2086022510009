@@ -18,7 +18,7 @@ class TimelineAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       toolbarHeight: preferredSize.height,
       title: compact
-          ? const Text('Star Wars Timeline')
+          ? const Text('Star Wars Chronology')
           : Column(
               mainAxisSize: MainAxisSize.min,
               children: [
