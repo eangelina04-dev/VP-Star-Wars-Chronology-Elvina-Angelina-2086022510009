@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/app_name.dart';
+import '../../../core/widgets/brand_app_bar.dart';
 import '../data/timeline_data.dart';
 import '../domain/era.dart';
 import '../domain/timeline_entry.dart';
@@ -18,6 +18,7 @@ class SavedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     final favorites = FavoritesScope.of(context);
     final entries = filterEntries(
       timelineEntries,
@@ -29,56 +30,75 @@ class SavedScreen extends StatelessWidget {
     final rows = groupByEra(entries);
 
     return Scaffold(
-      appBar: AppBar(title: const Text(appName)),
-      body: Align(
-        alignment: Alignment.topCenter,
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 640),
-          child: CustomScrollView(
-            slivers: [
-              if (rows.isEmpty)
-                SliverFillRemaining(
-                  hasScrollBody: false,
-                  child: EmptyResultsView(
-                    icon: Icons.star_border,
-                    title: 'Belum ada peristiwa tersimpan',
-                    message: 'Ketuk bintang pada sebuah peristiwa untuk menyimpannya.',
-                    actionLabel: 'Jelajahi peristiwa',
-                    onAction: onExplore,
-                  ),
-                )
-              else
-                SliverPadding(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  sliver: SliverList.builder(
-                    itemCount: rows.length,
-                    itemBuilder: (context, index) {
-                      final row = rows[index];
-                      if (row is! TimelineEntry) {
-                        return EraHeader(era: row as Era);
-                      }
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 4,
+      appBar: BrandAppBar.adaptive(context),
+      body: CustomScrollView(
+        slivers: [
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 640),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Tersimpan', style: theme.textTheme.headlineMedium),
+                      const SizedBox(height: 8),
+                      Text(
+                        'Peristiwa yang kamu bintangi dikelompokkan berdasarkan era.',
+                        style: theme.textTheme.bodyLarge?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
                         ),
-                        child: TimelineEntryCard(
-                          entry: row,
-                          isFavorite: true,
-                          onTap: () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => TimelineDetailScreen(entry: row),
-                            ),
-                          ),
-                          onFavoriteToggled: favorites.toggle,
-                        ),
-                      );
-                    },
+                      ),
+                    ],
                   ),
                 ),
-            ],
+              ),
+            ),
           ),
-        ),
+          if (rows.isEmpty)
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: EmptyResultsView(
+                icon: Icons.star_border,
+                title: 'Belum ada peristiwa tersimpan',
+                message:
+                    'Ketuk bintang pada sebuah peristiwa untuk menyimpannya.',
+                actionLabel: 'Jelajahi peristiwa',
+                onAction: onExplore,
+              ),
+            )
+          else
+            SliverPadding(
+              padding: const EdgeInsets.only(bottom: 16),
+              sliver: SliverList.builder(
+                itemCount: rows.length,
+                itemBuilder: (context, index) {
+                  final row = rows[index];
+                  if (row is! TimelineEntry) {
+                    return EraHeader(era: row as Era);
+                  }
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 4,
+                    ),
+                    child: TimelineEntryCard(
+                      entry: row,
+                      isFavorite: true,
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => TimelineDetailScreen(entry: row),
+                        ),
+                      ),
+                      onFavoriteToggled: favorites.toggle,
+                    ),
+                  );
+                },
+              ),
+            ),
+        ],
       ),
     );
   }

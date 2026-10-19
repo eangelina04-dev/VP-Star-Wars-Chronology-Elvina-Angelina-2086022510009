@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/widgets/brand_app_bar.dart';
 import '../data/timeline_data.dart';
 import '../domain/era.dart';
 import '../domain/timeline_entry.dart';
 import '../domain/timeline_filter.dart';
-import 'widgets/timeline_list.dart';
 import 'state/favorites_scope.dart';
 import 'timeline_detail_screen.dart';
+import 'widgets/timeline_list.dart';
 import 'widgets/detail_placeholder.dart';
-import 'widgets/timeline_app_bar.dart';
 import 'widgets/timeline_detail_body.dart';
 
 class TimelineScreen extends StatefulWidget {
@@ -75,7 +75,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
       era: _selectedEra,
     );
     final rows = groupByEra(entries);
-    final compact = MediaQuery.sizeOf(context).height < 500;
 
     TimelineEntry? selected;
     for (final e in entries) {
@@ -84,7 +83,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
     selected ??= entries.isEmpty ? null : entries.first;
 
     return Scaffold(
-      appBar: TimelineAppBar(compact: compact),
+      appBar: BrandAppBar.adaptive(context),
       body: LayoutBuilder(
         builder: (context, constraints) {
           final isWide = constraints.maxWidth >= _wideBreakpoint;

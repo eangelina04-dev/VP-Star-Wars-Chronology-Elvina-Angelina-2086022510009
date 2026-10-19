@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/constants/app_name.dart';
+import '../../../core/widgets/brand_app_bar.dart';
 import '../data/timeline_data.dart';
 import '../domain/era.dart';
 import '../domain/era_summary.dart';
@@ -44,7 +44,7 @@ class _EraScreenState extends State<EraScreen> {
     final hasEvents = _summaries.any((s) => s.eventCount > 0);
 
     return Scaffold(
-      appBar: AppBar(title: const Text(appName)),
+      appBar: BrandAppBar.adaptive(context),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
