@@ -61,7 +61,9 @@ class EraCard extends StatelessWidget {
                         const SizedBox(height: 4),
                         Text(
                           summary.era.label,
-                          style: textTheme.titleLarge,
+                          style: textTheme.titleLarge?.copyWith(
+                            color: colors.primary,
+                          ),
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                         ),

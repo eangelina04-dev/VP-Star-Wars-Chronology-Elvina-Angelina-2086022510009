@@ -53,39 +53,39 @@ class _HomeShellState extends State<HomeShell> {
       child: Scaffold(
         body: useRail
             ? Row(
-          children: [
-            NavigationRail(
-              selectedIndex: _index,
-              onDestinationSelected: _select,
-              labelType: NavigationRailLabelType.all,
-              destinations: [
-                for (final d in _destinations)
-                  NavigationRailDestination(
-                    icon: Icon(d.icon),
-                    selectedIcon: Icon(d.selectedIcon),
-                    label: Text(d.label),
+                children: [
+                  NavigationRail(
+                    selectedIndex: _index,
+                    onDestinationSelected: _select,
+                    labelType: NavigationRailLabelType.all,
+                    destinations: [
+                      for (final d in _destinations)
+                        NavigationRailDestination(
+                          icon: Icon(d.icon),
+                          selectedIcon: Icon(d.selectedIcon),
+                          label: Text(d.label),
+                        ),
+                    ],
                   ),
-              ],
-            ),
-            const VerticalDivider(width: 1),
-            Expanded(child: pages),
-          ],
-        )
+                  const VerticalDivider(width: 1),
+                  Expanded(child: pages),
+                ],
+              )
             : pages,
         bottomNavigationBar: useRail
             ? null
             : NavigationBar(
-          selectedIndex: _index,
-          onDestinationSelected: _select,
-          destinations: [
-            for (final d in _destinations)
-              NavigationDestination(
-                icon: Icon(d.icon),
-                selectedIcon: Icon(d.selectedIcon),
-                label: d.label,
+                selectedIndex: _index,
+                onDestinationSelected: _select,
+                destinations: [
+                  for (final d in _destinations)
+                    NavigationDestination(
+                      icon: Icon(d.icon),
+                      selectedIcon: Icon(d.selectedIcon),
+                      label: d.label,
+                    ),
+                ],
               ),
-          ],
-        ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'core/constants/app_name.dart';
 import 'core/theme/app_theme.dart';
 import 'features/timeline/presentation/home_shell.dart';
 import 'features/timeline/presentation/state/favorites_controller.dart';
@@ -26,7 +27,7 @@ class _StarWarsAppState extends State<StarWarsApp> {
     return FavoritesScope(
       controller: _favorites,
       child: MaterialApp(
-        title: 'Star Wars Chronology',
+        title: appName,
         theme: AppTheme.light,
         darkTheme: AppTheme.dark,
         themeMode: ThemeMode.system,

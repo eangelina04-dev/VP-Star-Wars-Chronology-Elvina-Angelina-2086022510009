@@ -84,8 +84,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
     selected ??= entries.isEmpty ? null : entries.first;
 
     return Scaffold(
-      appBar: TimelineAppBar(
-        compact: compact),
+      appBar: TimelineAppBar(compact: compact),
       body: LayoutBuilder(
         builder: (context, constraints) {
           final isWide = constraints.maxWidth >= _wideBreakpoint;
@@ -116,9 +115,9 @@ class _TimelineScreenState extends State<TimelineScreen> {
                 child: selected == null
                     ? const DetailPlaceholder()
                     : TimelineDetailBody(
-                  key: ValueKey(selected.id),
-                  entry: selected,
-                ),
+                        key: ValueKey(selected.id),
+                        entry: selected,
+                      ),
               ),
             ],
           );

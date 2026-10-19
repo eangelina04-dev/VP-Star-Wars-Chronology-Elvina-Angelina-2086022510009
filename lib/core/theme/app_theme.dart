@@ -48,6 +48,27 @@ class AppTheme {
     ),
   );
 
+  static NavigationBarThemeData _navigationBarTheme(ColorScheme scheme) {
+    return NavigationBarThemeData(
+      indicatorColor: starYellow,
+      iconTheme: WidgetStateProperty.resolveWith(
+        (states) => IconThemeData(
+          color: states.contains(WidgetState.selected)
+              ? black
+              : scheme.onSurfaceVariant,
+        ),
+      ),
+    );
+  }
+
+  static NavigationRailThemeData _navigationRailTheme(ColorScheme scheme) {
+    return NavigationRailThemeData(
+      indicatorColor: starYellow,
+      selectedIconTheme: const IconThemeData(color: black),
+      unselectedIconTheme: IconThemeData(color: scheme.onSurfaceVariant),
+    );
+  }
+
   static ThemeData get dark {
     final scheme =
         ColorScheme.fromSeed(
@@ -81,6 +102,8 @@ class AppTheme {
         centerTitle: true,
       ),
       chipTheme: ChipThemeData(side: BorderSide(color: scheme.outlineVariant)),
+      navigationBarTheme: _navigationBarTheme(scheme),
+      navigationRailTheme: _navigationRailTheme(scheme),
     );
   }
 
@@ -117,6 +140,8 @@ class AppTheme {
         centerTitle: true,
       ),
       chipTheme: ChipThemeData(side: BorderSide(color: scheme.outlineVariant)),
+      navigationBarTheme: _navigationBarTheme(scheme),
+      navigationRailTheme: _navigationRailTheme(scheme),
     );
   }
 }

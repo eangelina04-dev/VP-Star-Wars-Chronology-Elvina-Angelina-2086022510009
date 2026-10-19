@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/constants/app_name.dart';
+
 class TimelineAppBar extends StatelessWidget implements PreferredSizeWidget {
   const TimelineAppBar({super.key, required this.compact});
 
@@ -18,7 +20,7 @@ class TimelineAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       toolbarHeight: preferredSize.height,
       title: compact
-          ? const Text('Star Wars Chronology')
+          ? const Text(appName, maxLines: 1, overflow: TextOverflow.ellipsis)
           : Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -30,7 +32,11 @@ class TimelineAppBar extends StatelessWidget implements PreferredSizeWidget {
                       const SizedBox.shrink(),
                 ),
                 const SizedBox(height: 4),
-                const Text('Star Wars Timeline'),
+                const Text(
+                  appName,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ],
             ),
     );
