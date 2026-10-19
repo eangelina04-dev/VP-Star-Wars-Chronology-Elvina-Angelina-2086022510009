@@ -107,17 +107,41 @@ lib/
 ├── main.dart
 ├── app.dart
 ├── core/
-│   ├── constants/        # app_name.dart
-│   ├── theme/            # app_theme.dart (tema terang dan gelap)
-│   └── widgets/          # brand_app_bar.dart
+│   ├── constants/
+│   │   └── app_name.dart
+│   ├── theme/
+│   │   └── app_theme.dart
+│   └── widgets/
+│       └── brand_app_bar.dart
 └── features/
     └── timeline/
-        ├── data/         # timeline_data.dart
-        ├── domain/       # era, timeline_entry, filter, era_summary
+        ├── data/
+        │   └── timeline_data.dart
+        ├── domain/
+        │   ├── era.dart
+        │   ├── timeline_entry.dart
+        │   ├── timeline_filter.dart
+        │   └── era_summary.dart
         └── presentation/
-            ├── state/    # favorites_controller, favorites_scope
-            ├── widgets/  # kartu, chip, header, daftar, dll.
-            └── *.dart    # layar: home_shell, era, timeline, detail, saved
+            ├── state/
+            │   ├── favorites_controller.dart
+            │   └── favorites_scope.dart
+            ├── widgets/
+            │   └── detail_placeholder.dart
+            │   └── empty_results_view.dart
+            │   └── era_card.dart
+            │   └── era_filter_chips.dart
+            │   └── era_grid.dart
+            │   └── era_header.dart
+            │   └── timeline_detail_body.dart
+            │   └── timeline_entry_card.dart
+            │   └── timeline_list.dart
+            │   └── timeline_search_field.dart
+            └── era_screen.dart
+            └── home_shell.dart
+            └── saved_screen.dart
+            └── timeline_detail_screen.dart
+            └── timeline_screen.dart
 ```
 
 Penjelasan lengkap ada di [docs/structure.md](docs/week05/structure.md).
