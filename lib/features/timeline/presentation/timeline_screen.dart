@@ -21,7 +21,7 @@ class TimelineScreen extends StatefulWidget {
 }
 
 class _TimelineScreenState extends State<TimelineScreen> {
-  static const double _wideBreakpoint = 700;
+  static const double _wideBreakpoint = 720;
 
   final _searchController = TextEditingController();
   bool _isLoading = true;
