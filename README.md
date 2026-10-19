@@ -53,7 +53,8 @@ Aplikasi dirancang untuk dipakai saat menonton di ruangan redup, jadi tema gelap
 
 ## Unduh APK
 
-Unduh `app-release.apk` dari halaman [Releases](LINK_RELEASE_GITHUB) lalu pasang di perangkat Android.
+Unduh `app-release.apk` dari halaman [Releases](https://github.com/eangelina04-dev/VP-Star-Wars-Chronology-Elvina-Angelina-2086022510009/releases/download/v1.0.0/app-release.apk) lalu pasang di perangkat Android.
+Mengecek halaman release di (https://github.com/eangelina04-dev/VP-Star-Wars-Chronology-Elvina-Angelina-2086022510009/releases/tag/v1.0.0)
 
 ## Cara Menjalankan
 
@@ -119,7 +120,7 @@ lib/
             └── *.dart    # layar: home_shell, era, timeline, detail, saved
 ```
 
-Penjelasan lengkap ada di [docs/structure.md](docs/structure.md).
+Penjelasan lengkap ada di [docs/structure.md](docs/week05/structure.md).
 
 ## Teknologi
 
