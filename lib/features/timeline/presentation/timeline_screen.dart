@@ -111,7 +111,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
               SizedBox(width: 380, child: list),
               const VerticalDivider(width: 1),
               Expanded(
-                child: selected == null
+                child: (_isLoading || selected == null)
                     ? const DetailPlaceholder()
                     : TimelineDetailBody(
                         key: ValueKey(selected.id),

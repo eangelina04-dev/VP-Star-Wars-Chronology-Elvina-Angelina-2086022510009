@@ -10,7 +10,7 @@ final List<TimelineEntry> timelineEntries = kStressTest
 List<TimelineEntry> _stressEntries() {
   return List.generate(
     500,
-        (i) => TimelineEntry(
+    (i) => TimelineEntry(
       id: 'stress-$i',
       title: i % 50 == 0 ? 'Long title ' * 14 : 'Test event #$i',
       era: Era.values[i * 3 ~/ 500],

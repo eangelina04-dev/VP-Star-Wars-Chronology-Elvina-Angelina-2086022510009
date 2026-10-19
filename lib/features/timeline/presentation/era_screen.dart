@@ -64,7 +64,7 @@ class _EraScreenState extends State<EraScreen> {
                       const SizedBox(height: 8),
                       Text(
                         'The Star Wars saga, Episodes I through IX, is divided into three eras. '
-                            'Pick an era to browse its events in chronological order.',
+                        'Pick an era to browse its events in chronological order.',
                         style: theme.textTheme.bodyLarge?.copyWith(
                           color: theme.colorScheme.onSurfaceVariant,
                         ),
